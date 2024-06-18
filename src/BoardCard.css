@@ -1,0 +1,51 @@
+.board-card {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+  }
+
+  .board-card:hover {
+    transform: scale(1.05);
+  }
+
+  .board-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 10px;
+  }
+
+  .board-card h3 {
+    font-size: 1.2em;
+    color: #333;
+  }
+
+  .board-card p {
+    font-size: 1em;
+    color: #777;
+  }
+
+  .board-card a,
+  .board-card button {
+    display: block;
+    margin: 10px 0;
+    padding: 5px 10px;
+    font-size: 1em;
+    cursor: pointer;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.2s;
+    text-align: center;
+  }
+
+  .board-card a:hover,
+  .board-card button:hover {
+    background-color: #0056b3;
+  }
