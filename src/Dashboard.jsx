@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import './Dashboard.css'
-import NewBoardForm from './BoardCard'
+import NewBoardForm from './NewBoardForm'
 import BoardCard from './BoardCard'
 
 export default function Dashboard() {
@@ -61,7 +61,8 @@ export default function Dashboard() {
                 onChange={e => setSearchTerm(e.target.value)}
             />
         </header>
-        <div>
+
+        <div className='filter-buttons'>
             <button>All</button>
             <button>Recent</button>
             <button>Celebration</button>
@@ -76,8 +77,9 @@ export default function Dashboard() {
             ))}
         </div>
 
-
-
+        <footer>
+          @Basticks 2024
+        </footer>
     </>
   )
 }
