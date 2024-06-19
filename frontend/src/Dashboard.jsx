@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import './Dashboard.css'
-import NewBoardForm from './NewBoardForm'
-import BoardCard from './BoardCard'
+import NewBoardModal from './NewBoardModal'
+import Board from './Board'
 
 export default function Dashboard() {
     const [searchTerm, setSearchTerm] = useState('')
@@ -50,6 +50,14 @@ export default function Dashboard() {
         board.title.toLowerCase().includes(searchTerm.toLowerCase())
       );
 
+      const handleCloseModal = () => {
+        setShowForm(false);
+      }
+
+      const handleCreateBoard = () => {
+        //TODO set what to do when a new board is created
+      }
+
   return (
     <>
         <header>
@@ -70,10 +78,12 @@ export default function Dashboard() {
             <button>Inspiration</button>
             <button onClick={() => setShowForm(!showForm)}>Create a New Board</button>
         </div>
-        {showForm && <NewBoardForm/>}
+
+        <NewBoardModal showForm={showForm} handleCloseModal={handleCloseModal} handleCreateBoard={handleCreateBoard}/>
+
         <div className='board-list'>
             {filteredBoards.map(board => (
-                <BoardCard key={board.id} board={board}/>
+                <Board key={board.id} board={board}/>
             ))}
         </div>
 

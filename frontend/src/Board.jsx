@@ -1,6 +1,6 @@
-import './BoardCard.css'
+import './Board.css'
 
-export default function BoardCard({board}) {
+export default function Board({board}) {
   return (
     <div className='board-card'>
         <img src={board.image} alt={board.title} />

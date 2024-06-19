@@ -1,6 +1,7 @@
+import './CardPage.css'
 import React from 'react'
 
-export default function NewBoardForm() {
+export default function CardPage() {
   return (
     <div>
 
