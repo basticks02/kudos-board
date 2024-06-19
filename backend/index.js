@@ -9,12 +9,13 @@ const port = 3000;
 
 app.use(express.json())
 
+//CRUD for Boards
 
 //to get all the data from database
 app.get('/boards', async (req, res) => {
     try{
         const boards = await prisma.board.findMany();
-        res.json(boards)
+        res.status(200).json(boards)
     } catch (error){
         res.status(500).json({error: 'Something went wrong'})
     }
@@ -46,6 +47,75 @@ app.delete('/boards/:id', async (req, res) => {
             where:{id: parseInt(id)}
         });
         res.status(200).json(deletedBoard)
+    } catch (error){
+        res.status(500).json({error: 'Something went wrong'})
+    }
+})
+
+//to Get an individual data set from the database
+app.get('/boards/:id', async (req, res) => {
+    const {id} = req.params;
+    try{
+        const board = await prisma.board.findUnique({
+            where:{id: parseInt(id)}
+        });
+
+        if (board){
+            res.status(200).json(board)
+        }else{
+            res.status(404).json({error: 'Board not found'})
+        }
+    } catch (error){
+        res.status(500).json({error: 'Something went wrong'})
+    }
+})
+
+//CRUD for Cards
+
+//to get all cards
+app.get('/boards/:boardId/cards', async (req, res) => {
+    const {boardId} = req.params;
+    try{
+        const cards = await prisma.card.findMany({
+            where: {boardId: parseInt(boardId)}
+        })
+        res.status(200).json({cards})
+    } catch (error){
+        res.status(500).json({error: 'Something went wrong'})
+    }
+})
+
+//TODO to get a single card
+
+//to post a card
+app.post('/boards/:boardId/cards', async (req, res) => {
+    const {boardId} = req.params;
+    const {title, description, upvote, image} = req.body;
+    try{
+        const newCard = await prisma.card.create({
+            data:{
+                title,
+                description,
+                upvote,
+                image,
+                boardId: parseInt(boardId),
+            }
+        });
+        res.status(201).json(newCard)
+    } catch (error){
+        res.status(500).json({error: 'Something went wrong'})
+    }
+})
+
+//to delete a card
+app.delete('/boards/:boardId/cards/:cardId', async (req, res) => {
+    const {boardId, cardId} = req.params;
+    try{
+        const deletedCard = await prisma.card.delete({
+            where:{id: parseInt(cardId),
+        }
+        });
+        res.status(200).json(deletedCard)
     } catch (error){
         res.status(500).json({error: 'Something went wrong'})
     }

@@ -19,4 +19,15 @@ model Board {
   category String
   author String
   image String
+  cards Card[]
+}
+
+model Card {
+  id          Int      @id @default(autoincrement())
+  title       String
+  description String
+  upvote Int @default(0)
+  image String
+  boardId Int
+  board Board @relation(fields: [boardId], references: [id], onDelete: Cascade)
 }
