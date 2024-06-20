@@ -34,6 +34,7 @@ export default function Dashboard() {
         setShowForm(false);
       }
 
+      //Creating a new board
       const handleCreateBoard = async (data) => {
         try{
           const response = await api.post('/boards', data)
@@ -47,6 +48,7 @@ export default function Dashboard() {
         }
       }
 
+      //Deleting a board
       const handleDeleteBoard = async (id) => {
         try{
           await api.delete(`/boards/${id}`)
