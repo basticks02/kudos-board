@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom'
 import './Board.css'
-import api from './api'
 
 export default function Board({board, handleDeleteBoard}) {
 
@@ -13,7 +12,6 @@ export default function Board({board, handleDeleteBoard}) {
           <Link to={`/boards/${board.id}/cards`}>View Board</Link>
         </button>
         <button onClick={() => handleDeleteBoard(board.id)}>Delete Board</button>
-
     </div>
   )
 }

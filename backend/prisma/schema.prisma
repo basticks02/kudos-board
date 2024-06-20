@@ -19,6 +19,7 @@ model Board {
   category String
   author String
   cards Card[]
+  created_at DateTime @default(now())
 }
 
 model Card {

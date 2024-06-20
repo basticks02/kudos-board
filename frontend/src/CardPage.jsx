@@ -40,6 +40,7 @@ export default function CardPage() {
         </header>
 
         <main className='cardlist'>
+            <button>Create Card</button>
             <Card/>
         </main>
 

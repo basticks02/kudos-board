@@ -8,6 +8,7 @@ export default function Dashboard() {
     const [searchTerm, setSearchTerm] = useState('')
     const [showForm, setShowForm] = useState(false)
     const [boards, setBoards] = useState([])
+    const [selectedCategory, setSelectedCategory] = useState('All')
 
     //Fetching boards from the backend
     useEffect(() => {
@@ -26,9 +27,15 @@ export default function Dashboard() {
       fetchBoards()
     }, [])
 
+    //Filtering boards based on search term and category
       const filteredBoards = boards.filter(board =>
-        board.title.toLowerCase().includes(searchTerm.toLowerCase())
+        board.title.toLowerCase().includes(searchTerm.toLowerCase()) && (selectedCategory === 'All' || board.category === selectedCategory)
       );
+
+      //Sorting recent boards based on recency
+      const sortedBoards = selectedCategory === 'Recent'
+      ? [...filteredBoards].sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
+      : filteredBoards;
 
       const handleCloseModal = () => {
         setShowForm(false);
@@ -71,20 +78,20 @@ export default function Dashboard() {
         </header>
 
         <div className='filter-buttons'>
-            <button>All</button>
-            <button>Recent</button>
-            <button>Celebration</button>
-            <button>Thank You</button>
-            <button>Inspiration</button>
+            <button onClick={() => setSelectedCategory('All')}>All</button>
+            <button onClick={() => setSelectedCategory('Recent')}>Recent</button>
+            <button onClick={() => setSelectedCategory('Celebration')}>Celebration</button>
+            <button onClick={() => setSelectedCategory('Thank You')}>Thank You</button>
+            <button onClick={() => setSelectedCategory('Inspiration')}>Inspiration</button>
             <button onClick={() => setShowForm(!showForm)}>Create a New Board</button>
         </div>
 
         <NewBoardModal showForm={showForm} handleCloseModal={handleCloseModal} handleCreateBoard={handleCreateBoard}/>
 
         <div className='board-list'>
-            {filteredBoards.map(board => (
-                <Board key={board.id} board={board} handleDeleteBoard={handleDeleteBoard}/>
-            ))}
+            {sortedBoards.length > 0 ? (sortedBoards.map(board => (
+                <Board key={board.id} board={board} handleDeleteBoard={handleDeleteBoard}/>)
+            )) : (<h2>No boards</h2>)}
         </div>
 
         <footer>
