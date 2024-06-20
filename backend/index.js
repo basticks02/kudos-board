@@ -4,14 +4,14 @@ const cors = require('cors');
 
 const express = require('express');
 const app = express()
-app.use(cors());
 const port = 3000;
 
+app.use(cors());
 app.use(express.json())
 
 //CRUD for Boards
 
-//to get all the data from database
+//to get all the boards from database
 app.get('/boards', async (req, res) => {
     try{
         const boards = await prisma.board.findMany();
@@ -21,7 +21,7 @@ app.get('/boards', async (req, res) => {
     }
 })
 
-//to Post data to the database
+//to Post boards to the database
 app.post('/boards', async (req, res) => {
     const {title, category, author, image} = req.body;
     try{
@@ -39,7 +39,7 @@ app.post('/boards', async (req, res) => {
     }
 })
 
-//to Delete data from the database
+//to Delete boards from the database
 app.delete('/boards/:id', async (req, res) => {
     const {id} = req.params;
     try{
@@ -52,7 +52,7 @@ app.delete('/boards/:id', async (req, res) => {
     }
 })
 
-//to Get an individual data set from the database
+//to Get an individual boards from the database
 app.get('/boards/:id', async (req, res) => {
     const {id} = req.params;
     try{

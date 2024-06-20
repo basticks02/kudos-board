@@ -1,50 +1,30 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './Dashboard.css'
 import NewBoardModal from './NewBoardModal'
 import Board from './Board'
+import api from './api'
 
 export default function Dashboard() {
     const [searchTerm, setSearchTerm] = useState('')
     const [showForm, setShowForm] = useState(false)
+    const [boards, setBoards] = useState([])
 
-    const boards = [
-        {
-          id: 1,
-          title: 'Happy Birthday Trenisha!',
-          category: 'Celebration',
-          image: 'https://via.placeholder.com/150',
-        },
-        {
-          id: 2,
-          title: 'You Deserve The Best!',
-          category: 'Inspiration',
-          image: 'https://via.placeholder.com/150',
-        },
-        {
-          id: 3,
-          title: 'Thanks a Bunch!',
-          category: 'Thank You',
-          image: 'https://via.placeholder.com/150',
-        },
-        {
-          id: 4,
-          title: 'Happy Birthday!',
-          category: 'Celebration',
-          image: 'https://via.placeholder.com/150',
-        },
-        {
-          id: 5,
-          title: 'Nice work!',
-          category: 'Celebration',
-          image: 'https://via.placeholder.com/150',
-        },
-        {
-          id: 6,
-          title: 'You\'re the best!',
-          category: 'Celebration',
-          image: 'https://via.placeholder.com/150',
-        },
-      ];
+    //Fetching boards from the backend
+    useEffect(() => {
+      const fetchBoards = async () => {
+        try{
+          const response = await api.get('/boards')
+          const boardandimg = response.data.map(board => ({
+            ...board,
+            randomImg: `https://picsum.photos/200/300?random=${Math.floor(Math.random()*1000)}`
+          }))
+          setBoards(boardandimg)
+        } catch (error){
+          console.error("Error fetching boards:", error)
+        }
+      }
+      fetchBoards()
+    }, [])
 
       const filteredBoards = boards.filter(board =>
         board.title.toLowerCase().includes(searchTerm.toLowerCase())
@@ -54,8 +34,26 @@ export default function Dashboard() {
         setShowForm(false);
       }
 
-      const handleCreateBoard = () => {
-        //TODO set what to do when a new board is created
+      const handleCreateBoard = async (data) => {
+        try{
+          const response = await api.post('/boards', data)
+          const newBoard ={
+            ...response.data,
+            randomImg: `https://picsum.photos/200/300?random=${Math.floor(Math.random()*1000)}`
+          }
+          setBoards([...boards, newBoard])
+        } catch (error){
+          console.error("Error creating board:", error)
+        }
+      }
+
+      const handleDeleteBoard = async (id) => {
+        try{
+          await api.delete(`/boards/${id}`)
+          setBoards(boards.filter((board) => board.id !== id))
+        } catch (error){
+          console.error("Error deleting board:", error)
+        }
       }
 
   return (
@@ -83,7 +81,7 @@ export default function Dashboard() {
 
         <div className='board-list'>
             {filteredBoards.map(board => (
-                <Board key={board.id} board={board}/>
+                <Board key={board.id} board={board} handleDeleteBoard={handleDeleteBoard}/>
             ))}
         </div>
 
