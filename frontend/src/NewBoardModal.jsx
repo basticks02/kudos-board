@@ -13,6 +13,7 @@ export default function NewBoardModal({showForm, handleCloseModal, handleCreateB
       category,
       author
     };
+    console.log('Form Data:', data);
     handleCreateBoard(data);
     handleCloseModal();
   };
