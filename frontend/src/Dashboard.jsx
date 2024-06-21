@@ -3,6 +3,7 @@ import './Dashboard.css'
 import NewBoardModal from './NewBoardModal'
 import Board from './Board'
 import api from './api'
+import clap from '../images/clap.gif'
 
 export default function Dashboard() {
     const [searchTerm, setSearchTerm] = useState('')
@@ -68,7 +69,10 @@ export default function Dashboard() {
   return (
     <>
         <header>
+          <div>
             <h1>KUDOBOARD</h1>
+            <img src={clap} alt="" />
+          </div>
             <input
                 type="text"
                 placeholder='Search boards...'

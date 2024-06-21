@@ -11,6 +11,8 @@
     margin-bottom: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     transition: all 0.5s ease;
+    height: 150px;
+    width: 150px;
 }
 
 .card img:hover{
@@ -29,4 +31,18 @@ button{
 button:hover{
     color: black;
     background-color: rgb(190, 190, 190);
+    cursor: pointer;
+}
+
+.deletecard:hover{
+    color: black;
+    background-color: red;
+}
+
+.upvotebutton{
+    background-color: green;
+}
+
+.upvotebutton:hover{
+    background-color: rgb(16, 216, 16);
 }

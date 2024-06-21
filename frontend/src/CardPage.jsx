@@ -76,7 +76,7 @@ export default function CardPage() {
         <header>
             <span className='close-button' onClick={handleReturntoDashboard}>&times;</span>
             <div>
-                <h1>KudoBoard</h1>
+                <h1>KUDOBOARD</h1>
                 <p>{board.title}</p>
             </div>
         </header>

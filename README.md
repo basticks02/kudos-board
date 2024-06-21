@@ -23,25 +23,17 @@ Deployed Application (optional): [Kudos Board Deployed Site](ADD_LINK_HERE)
     - [x] Boards should have a title, category, and author (optional).
   - [x] User can delete boards.
 
-- [ ] **Board Page**
-  - [ ] Displays a list of all cards for a board.
-    -  [ ] Each card features a text message.
-    -  [ ] Each card features a gif found using the [GIPHY API](https://developers.giphy.com/docs/api/).
-    -  [ ] Users can optionally sign the card as the author.
--   [ ] Cards can be upvoted.
--   [ ] Cards can be deleted.
+- [x] **Board Page**
+  - [x] Displays a list of all cards for a board.
+    -  [x] Each card features a text message.
+    -  [x] Each card features a gif found using the [GIPHY API](https://developers.giphy.com/docs/api/).
+    -  [x] Users can optionally sign the card as the author.
+-   [x] Cards can be upvoted.
+-   [x] Cards can be deleted.
 
 
 #### STRETCH FEATURES
 
-
-- [ ] **User Accounts**
-  - [ ] Users should be able to log in with a username and password.
-  - [ ] Users should be able to sign up for a new account.
-  - [ ]  Boards and cards should be associated with a user.
-    - [ ]  Anonymous cards or cards by guest users should still be allowed.
-  - [ ] Add a new filter option on the home page to display only the current user's boards.
-  - [ ] Allow boards to be deleted only if they are owned by the user.
 - [ ] **Deployment**
   - [ ] Website is deployed via Render.
 - [ ] **Comments**
