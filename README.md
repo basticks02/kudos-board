@@ -42,28 +42,23 @@ Deployed Application (optional): [Kudos Board Deployed Site](ADD_LINK_HERE)
 
 ### Walkthrough Video
 
-`TODO://` Add the embedded URL code to your animated app walkthrough below, `ADD_EMBEDDED_CODE_HERE`. Make sure the video or gif actually renders and animates when viewing this README. (🚫 Remove this paragraph after adding walkthrough video)
-
-`ADD_EMBEDDED_CODE_HERE`
+https://www.loom.com/share/b280efd92f8a41d38be6e229fae8d172?sid=25bd3ca0-4b28-4cca-8438-57b5820b9b7e
 
 ### Reflection
 
 * Did the topics discussed in your labs prepare you to complete the assignment? Be specific, which features in your weekly assignment did you feel unprepared to complete?
 
-Add your response here
+I felt most unprepared for the actual linking of the backend to the frontend. I had a clear picture of how the backend and database worked but had to learn how to link it.
 
 * If you had more time, what would you have done differently? Would you have added additional features? Changed the way your project responded to a particular event, etc.
 
-Add your response here
+I would have dived deeper into the UI and completed the stretch features.
 
 * Reflect on your project demo, what went well? Were there things that maybe didn't go as planned? Did you notice something that your peer did that you would like to try next time?
 
-Add your response here
+I am yet to demo
 
 ### Open-source libraries used
 
-- Add any links to open-source libraries used in your project.
-
-### Shout out
-
-Give a shout out to somebody from your cohort that especially helped you during your project. This can be a fellow peer, instructor, TA, mentor, etc.
+* Font-awesome
+* Google fonts
