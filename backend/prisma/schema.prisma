@@ -19,6 +19,7 @@ model Board {
   category String
   author String
   cards Card[]
+  created_at DateTime @default(now())
 }
 
 model Card {
@@ -27,6 +28,7 @@ model Card {
   description String
   upvote Int @default(0)
   image String
+  author String?
   boardId Int
   board Board @relation(fields: [boardId], references: [id], onDelete: Cascade)
 }
