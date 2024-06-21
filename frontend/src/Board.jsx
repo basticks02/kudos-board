@@ -8,10 +8,10 @@ export default function Board({board, handleDeleteBoard}) {
         <img src={board.randomImg} alt={board.title} />
         <h3>{board.title}</h3>
         <p>{board.category}</p>
-        <button>
+        <button className='viewboard'>
           <Link to={`/boards/${board.id}/cards`}>View Board</Link>
         </button>
-        <button onClick={() => handleDeleteBoard(board.id)}>Delete Board</button>
+        <button className='deleteit' onClick={() => handleDeleteBoard(board.id)}>Delete Board</button>
     </div>
   )
 }

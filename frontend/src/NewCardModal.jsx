@@ -7,6 +7,7 @@ export default function NewCardModal({showModal, handleClose, handleCreateCard})
     const [gifSearch, setGifSearch] = useState('');
     const [selectedGif, setSelectedGif] = useState('');
     const [author, setAuthor] = useState('');
+    const [gifs,setGifs] = useState([]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -22,8 +23,16 @@ export default function NewCardModal({showModal, handleClose, handleCreateCard})
     setGifSearch('');
     setSelectedGif('');
     setAuthor('');
+    setGifs([]);
     handleClose();
   };
+
+  const fetchGifs = async () => {
+    const apiKey = import.meta.env.VITE_API_KEY;
+    const response = await fetch(`https://api.giphy.com/v1/gifs/search?api_key=${apiKey}&q=${gifSearch}&limit=8`);
+    const data = await response.json();
+    setGifs(data.data);
+  }
 
   if (!showModal) return null;
 
@@ -38,6 +47,7 @@ export default function NewCardModal({showModal, handleClose, handleCreateCard})
                     placeholder="Enter card title"
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
+                    maxLength={15}
                     required
                 />
 
@@ -55,11 +65,17 @@ export default function NewCardModal({showModal, handleClose, handleCreateCard})
                     value={gifSearch}
                     onChange={(e) => setGifSearch(e.target.value)}
                 />
-                <button type="button" onClick={() => console.log('Search GIFs')}>Search</button>
-                <div className='gif-container'>
-                    <img src="https://media.giphy.com/media/l0HlNQ03J5JxX6lva/giphy.gif" alt="gif" onClick={() => setSelectedGif('https://media.giphy.com/media/l0HlNQ03J5JxX6lva/giphy.gif')} />
+                <button type="button" onClick={fetchGifs}>Search</button>
 
-                    //TODOs : Add GIFs here
+                <div className='gif-container'>
+                {gifs.map((gif) => (
+                    <img
+                        key={gif.id}
+                        src={gif.images.fixed_height.url}
+                        alt={gif.title}
+                        onClick={() => setSelectedGif(gif.images.fixed_height.url)}
+                    />
+                ))}
                 </div>
 
                 <input
