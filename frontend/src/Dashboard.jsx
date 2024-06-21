@@ -75,7 +75,6 @@ export default function Dashboard() {
                 value={searchTerm}
                 onChange={e => setSearchTerm(e.target.value)}
             />
-        </header>
 
         <div className='filter-buttons'>
             <button onClick={() => setSelectedCategory('All')}>All</button>
@@ -83,8 +82,11 @@ export default function Dashboard() {
             <button onClick={() => setSelectedCategory('Celebration')}>Celebration</button>
             <button onClick={() => setSelectedCategory('Thank You')}>Thank You</button>
             <button onClick={() => setSelectedCategory('Inspiration')}>Inspiration</button>
+        </div>
+        <div className='createboardbutton'>
             <button onClick={() => setShowForm(!showForm)}>Create a New Board</button>
         </div>
+        </header>
 
         <NewBoardModal showForm={showForm} handleCloseModal={handleCloseModal} handleCreateBoard={handleCreateBoard}/>
 

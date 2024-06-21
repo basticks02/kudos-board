@@ -2,60 +2,88 @@
 header {
   text-align: center;
   margin-bottom: 20px;
+  padding: 20px;
+  box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 header input {
   font-size: 1em;
   flex-grow: 1;
+  margin-bottom: 20px;
+  border: none;
+  border-radius: 10px;
+  padding: 5px;
+  box-shadow: inset 2px 2px 8px rgba(0, 0, 0, 0.3);
 }
+
+
+header input:hover{
+}
+
 
 .filter-buttons {
   display: flex;
   justify-content: center;
   gap: 10px;
   margin-bottom: 20px;
+
+}
+
+.createboardbutton{
+  text-align: center;
+}
+
+.createboardbutton button{
+  justify-content: center;
+  font-size: 1em;
+  cursor: pointer;
+  border: none;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+button:hover{
+  background-color: black;
+  color: gainsboro;
+  transform: scale(0.98);
+  transition: all 0.5s ease;
 }
 
 .filter-buttons button {
   font-size: 1em;
   cursor: pointer;
+  border: none;
+  padding: 5px;
+  border-radius: 10px;
 }
 
 .board-list{
   display: flex;
-  margin: 20px;
+  padding: 20px 20px 20px 20px;
+  flex-wrap: wrap;
   gap: 20px;
   justify-content: center;
+
 }
 
 footer{
   width: 100%;
-  position: absolute;
   text-align: center;
   bottom: 0;
+  box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.3);
 }
 
-
-
-.dashboard .board-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-}
-
-.dashboard .board-list .board-card {
-  flex: 0 1 300px;
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  text-align: center;
-  transition: transform 0.2s;
-}
-
-.dashboard .board-list .board-card img {
-  width: 100%;
-  height: 150px;
-  object-fit: cover;
-  border-radius: 10px;
+@media (max-width: 600px) {
+  .filter-buttons{
+    flex-direction: column;
+    align-items: center;
+  }
+  .filter-buttons button{
+    width: 30%;
+  }
+  .board-list{
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
 }

@@ -28,6 +28,7 @@ model Card {
   description String
   upvote Int @default(0)
   image String
+  author String?
   boardId Int
   board Board @relation(fields: [boardId], references: [id], onDelete: Cascade)
 }

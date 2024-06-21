@@ -90,7 +90,7 @@ app.get('/boards/:boardId/cards', async (req, res) => {
 //to post a card
 app.post('/boards/:boardId/cards', async (req, res) => {
     const {boardId} = req.params;
-    const {title, description, upvote, image} = req.body;
+    const {title, description, upvote, image, author} = req.body;
     try{
         const newCard = await prisma.card.create({
             data:{
@@ -98,6 +98,7 @@ app.post('/boards/:boardId/cards', async (req, res) => {
                 description,
                 upvote,
                 image,
+                author,
                 boardId: parseInt(boardId),
             }
         });
@@ -106,6 +107,21 @@ app.post('/boards/:boardId/cards', async (req, res) => {
         res.status(500).json({error: 'Something went wrong'})
     }
 })
+
+//to update a card (upvote)
+app.patch('/boards/:boardId/cards/:cardId', async (req, res) => {
+    const { boardId, cardId } = req.params;
+    const { upvote } = req.body;
+    try {
+        const updatedCard = await prisma.card.update({
+            where: { id: parseInt(cardId) },
+            data: { upvote }
+        });
+        res.status(200).json(updatedCard);
+    } catch (error) {
+        res.status(500).json({ error: 'Something went wrong' });
+    }
+});
 
 //to delete a card
 app.delete('/boards/:boardId/cards/:cardId', async (req, res) => {
