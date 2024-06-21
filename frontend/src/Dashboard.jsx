@@ -10,6 +10,7 @@ export default function Dashboard() {
     const [showForm, setShowForm] = useState(false)
     const [boards, setBoards] = useState([])
     const [selectedCategory, setSelectedCategory] = useState('All')
+    const [sortByRecency, setSortByRecency] = useState(false)
 
     //Fetching boards from the backend
     useEffect(() => {
@@ -34,7 +35,7 @@ export default function Dashboard() {
       );
 
       //Sorting recent boards based on recency
-      const sortedBoards = selectedCategory === 'Recent'
+      const sortedBoards = sortByRecency
       ? [...filteredBoards].sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
       : filteredBoards;
 
@@ -66,6 +67,11 @@ export default function Dashboard() {
         }
       }
 
+      const handleSortByRecency = () => {
+        setSelectedCategory('All');
+        setSortByRecency(true);
+      }
+
   return (
     <>
         <header>
@@ -82,7 +88,7 @@ export default function Dashboard() {
 
         <div className='filter-buttons'>
             <button onClick={() => setSelectedCategory('All')}>All</button>
-            <button onClick={() => setSelectedCategory('Recent')}>Recent</button>
+            <button onClick={handleSortByRecency}>Recent</button>
             <button onClick={() => setSelectedCategory('Celebration')}>Celebration</button>
             <button onClick={() => setSelectedCategory('Thank You')}>Thank You</button>
             <button onClick={() => setSelectedCategory('Inspiration')}>Inspiration</button>
