@@ -4,7 +4,7 @@
 
 Submitted by: **Ekomobong(Praise) Ekanem**
 
-Deployed Application (optional): [Kudos Board Deployed Site](ADD_LINK_HERE)
+Deployed Application (optional): [Kudos Board Deployed Site](https://kudos-board-frontend-6fjb.onrender.com)
 
 ### Application Features
 
@@ -34,8 +34,8 @@ Deployed Application (optional): [Kudos Board Deployed Site](ADD_LINK_HERE)
 
 #### STRETCH FEATURES
 
-- [ ] **Deployment**
-  - [ ] Website is deployed via Render.
+- [x] **Deployment**
+  - [x] Website is deployed via Render.
 - [ ] **Comments**
   - [ ] Users should be able to comment on cards.
 
